@@ -49,7 +49,12 @@ void q_short( int low, int high)
         return;
     }
 
+    pivot = arr[low]; //step 2
+    i = low + 1; //step 3
+    j = high; //step 4
 
+    
+        }
 int main()
 {
     std::cout << "Hello World!\n";
