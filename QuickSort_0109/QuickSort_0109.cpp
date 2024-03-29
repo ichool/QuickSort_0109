@@ -41,7 +41,7 @@ void swap(int x, int y)
     mov_count++;
 }
 
-void q_short( int low, int high)
+void q_short(int low, int high)
 {
     int temp;
     int pivot, i, j;
@@ -53,22 +53,38 @@ void q_short( int low, int high)
     i = low + 1; //step 3
     j = high; //step 4
 
-    while (i <= j) //step 10
+    while (i <= j)//step 10
+    {
         //search for an element greater than ρίνοt
         while ((arr[i] <= pivot) && (i <= high)) // step 5
         {
             i++; //step 6
             cmp_count++;
         }
-    cmp_count++;
-    //search for on element Less than or equal to pivot 
-    while ((arr[j] > pivot) && (j >= low)) //step 7
-    {
-        j--; //step 8
         cmp_count++;
+         //search for on element Less than or equal to pivot 
+        while ((arr[j] > pivot) && (j >= low)) //step 7
+        {
+             j--; //step 8
+             cmp_count++;
+        }
+         cmp_count++;
+        if (i < j) // step 9
+        {
+             //swap the element at index i whit the element at index
+             swap(i, j);
+        }
+     }
+    if (low < j) {//step 11
+        //swap the pivot element with the element at index 3 
+        swap(low, j);
     }
-    cmp_count++;
-    if (i < j) // step 9
+    //recursive call to sort the left sub array
+    q_short(low,j - 1); //step 12
+    
+    //recursive call to sort the right sub array
+    q_short(j + 1, high); //step 13
+}
 
 
 
